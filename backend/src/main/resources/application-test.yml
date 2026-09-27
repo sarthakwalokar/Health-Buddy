@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:healthbuddy_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false
+
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    access-expiration-ms: 60000     # 1 minute for test
+    refresh-expiration-ms: 300000   # 5 minutes for test
+  cors:
+    allowed-origins: http://localhost:5173
+    allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
+  admin-bootstrap:
+    email: admin@healthbuddy.com
+    password: Admin@HealthBuddy2026!
+    full-name: System Administrator
+  storage:
+    local:
+      base-dir: ./target/test-data/medical-reports
+    max-file-size-bytes: 20971520
